@@ -1,22 +1,18 @@
 import { Injectable } from '@nestjs/common';
-
-interface Usuario {
-  nome: string;
-  email: string;
-  senha: string;
-}
+import { CriaUsuarioDTO } from './dto/CriaUsuario.dto';
 
 @Injectable()
 export class UsuarioRepository {
-  private usuarios: Usuario[] = [];
+  private usuarios: CriaUsuarioDTO[] = [];
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  async salvar(usuario: Usuario) {
+  async salvar(usuario) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     this.usuarios.push(usuario);
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  async listar(): Promise<Usuario[]> {
+  async listar(): Promise<CriaUsuarioDTO[]> {
     return this.usuarios;
   }
 }
