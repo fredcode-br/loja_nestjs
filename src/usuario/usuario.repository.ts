@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { CriaUsuarioDTO } from './dto/CriaUsuario.dto';
+import { UsuarioEntity } from './usuario.entity';
 
 @Injectable()
 export class UsuarioRepository {
-  private usuarios: CriaUsuarioDTO[] = [];
+  private usuarios: UsuarioEntity[] = [];
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  async salvar(usuario) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  async salvar(usuario: UsuarioEntity) {
     this.usuarios.push(usuario);
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  async listar(): Promise<CriaUsuarioDTO[]> {
+  async listar(): Promise<UsuarioEntity[]> {
     return this.usuarios;
   }
 
